@@ -4,7 +4,7 @@ import re
 #engine_name = 'CastEngine'
 #engine_dir= engine_name + '/'
 
-def populate_cmake_with_src_files(cmake_project_name = 'Library', dir_of_cmake_file = '.', extensions = ['.cpp', '.hpp', '.h']):
+def populate_cmake_with_src_files(cmake_project_name = 'Library', dir_of_cmake_file = '', extensions = ['.cpp', '.hpp', '.h']):
 
     src_files = []
     for root, dirs, files in os.walk(dir_of_cmake_file):
@@ -22,13 +22,22 @@ def populate_cmake_with_src_files(cmake_project_name = 'Library', dir_of_cmake_f
     for file in src_files:
         ammend_data = ammend_data + file + '\n\t'
 
-    print(ammend_data)
+    print("Ammend data:\n\"", ammend_data, "\"")
 
     cmake_file = open(dir_of_cmake_file + 'CMakeLists.txt')
     data = cmake_file.read();
     #data = data.replace('add_library([^)]*)', 'add_library(sup)')
+    data = ""
+    # if(re.search('add_library([^)]*)', data, flags = re.DOTALL) == None):
+    #     print("No library, adding one.")
+    #     data = 'add_library(\n\tLibrary SHARED\n)' 
     data = re.sub('add_library([^)]*)', ammend_data, data, count = 1, flags = re.DOTALL)
-
+    print(data)
+    if(data == ""):
+        print("No library, adding one.")
+        data = 'add_library(\n\t'+ cmake_project_name +' SHARED\n)' 
     cmake_file = open(dir_of_cmake_file + 'CMakeLists.txt', 'w')
     cmake_file.write(data)
-    print(data)
+    print("Writing: \n\"", data, "\"")
+
+populate_cmake_with_src_files('Library', 'Library/')
