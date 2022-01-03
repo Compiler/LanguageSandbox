@@ -9,4 +9,5 @@ add_library(
 	Library SHARED 
 	src/Tmp.h
 	src/Tmp.cpp
+	src/TmpNew.h
 	)

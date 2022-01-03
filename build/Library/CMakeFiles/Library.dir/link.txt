@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC  -ggdb -g  -shared -Wl,-soname,libLibrary.so -o libLibrary.so CMakeFiles/Library.dir/src/Tmp.cpp.o 
