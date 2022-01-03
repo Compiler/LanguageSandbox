@@ -29,7 +29,7 @@ def populate_cmake_with_src_files(cmake_project_name = 'Library', dir_of_cmake_f
     #data = data.replace('add_library([^)]*)', 'add_library(sup)')
     if(re.search('add_library([^)]*)', data, flags = re.DOTALL) == None):
         print("No library, adding one.")
-        data = data + '\nadd_library(\n\tLibrary SHARED\n)' 
+        data = '\nadd_library(\n\tLibrary SHARED\n)' + data; 
     data = re.sub('add_library([^)]*)', ammend_data, data, count = 1, flags = re.DOTALL)
 
     cmake_file = open(dir_of_cmake_file + 'CMakeLists.txt', 'w')
