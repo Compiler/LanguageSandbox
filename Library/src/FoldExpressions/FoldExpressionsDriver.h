@@ -7,6 +7,11 @@ namespace lrl{
 
         public:
             void Run();
+
+            template<typename... PackType>
+            auto FoldMultiply(PackType ... pack){
+                return (pack * ... * 1);
+            }
     };
 
 }
