@@ -1,3 +1,5 @@
+
 add_library(
-	Library SHARED
-)
+	Library SHARED 
+	src/Tmp.h
+	)
