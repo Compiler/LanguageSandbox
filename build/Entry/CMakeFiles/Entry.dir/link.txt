@@ -1,0 +1,1 @@
+/usr/bin/c++   -ggdb -g   CMakeFiles/Entry.dir/src/main.cpp.o  -o Output  -Wl,-rpath,/home/luke/Documents/LanguageSandbox/build/Library ../Library/libLibrary.so 
